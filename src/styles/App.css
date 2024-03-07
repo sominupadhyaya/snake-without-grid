@@ -15,12 +15,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid red;
 }
 .game{
   height: 80%;
   width: 80%;
-  border: 2px solid white;
+  border: 2px solid blue;
   order : 2;
 }
 
@@ -35,5 +34,7 @@
 }
 
 .start{
+  margin-top: 2vh;
+  padding: 0%;
   order : 3;
 }

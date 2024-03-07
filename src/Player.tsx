@@ -15,11 +15,9 @@ const Player: React.FC<PlayerProps> = ({isPlaying}) => {
   if (isPlaying && positionY !== 10 && positionY !== 90
     && positionX !== 90 && positionX !== 10){ 
 
-  useEffect(() =>{
+  useEffect(() =>{  
       document.addEventListener("keydown", onKeyDown, true)
     const interval = setInterval(() => {
-      console.log(positionX,positionY)
-
         switch (currKey) {
           case "w":
             setPositionX(curr => curr - 2)
@@ -46,6 +44,7 @@ const Player: React.FC<PlayerProps> = ({isPlaying}) => {
     }else{
       setPositionX(50)
       setPositionY(50)
+      setCurrKey("")
     }
   return (
     <>
