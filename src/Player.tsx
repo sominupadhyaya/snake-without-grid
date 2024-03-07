@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import {PlayerProps} from "./types/types.ts"
-
 import './styles/App.css'
 
 const Player: React.FC<PlayerProps> = ({isPlaying}) => { 
@@ -9,18 +8,18 @@ const Player: React.FC<PlayerProps> = ({isPlaying}) => {
  
   const [currKey, setCurrKey] = useState<string>("")
 
-  if (isPlaying){
-  useEffect(() =>{
-        document.addEventListener("keydown", onKeyDown, true)
-    }, [])
-
-
-  const onKeyDown = (e:KeyboardEvent) =>{
-    setCurrKey(e.key)
-  }
+  
+    const onKeyDown = (e:KeyboardEvent) =>{
+      setCurrKey(e.key)
+    }
+  if (isPlaying && positionY !== 10 && positionY !== 90
+    && positionX !== 90 && positionX !== 10){ 
 
   useEffect(() =>{
+      document.addEventListener("keydown", onKeyDown, true)
     const interval = setInterval(() => {
+      console.log(positionX,positionY)
+
         switch (currKey) {
           case "w":
             setPositionX(curr => curr - 2)
@@ -42,8 +41,12 @@ const Player: React.FC<PlayerProps> = ({isPlaying}) => {
             break;
         }},100)
         return () => clearInterval(interval)
-  },[currKey])
-}
+      },
+  [currKey])
+    }else{
+      setPositionX(50)
+      setPositionY(50)
+    }
   return (
     <>
         <div className="player" style={{
